@@ -21,7 +21,8 @@ db.create_all()
 
 @app.route('/')
 def index():
-    return ("Hello Flask, What's Up!")
+    person = Person.query.first()
+    return ("Hello " + person.name)
 
 
 if __name__ == '__main__':
