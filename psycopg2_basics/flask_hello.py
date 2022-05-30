@@ -15,13 +15,16 @@ class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
 
+    def __repr__(self) -> str:
+        return f'<Person ID: {self.id}, name: {self.name}>'
+
 
 db.create_all()
 
 
 @app.route('/')
 def index():
-    person = Person.query.first()
+    person = Person.query.filter_by(name == "Bob")
     return ("Hello " + person.name)
 
 
