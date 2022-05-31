@@ -25,7 +25,9 @@ class Todo(db.Model):
 
 @app.route('/')
 def index():
-    return ("Hello")
+    todo_items = db.session.query(Todo).all()
+
+    return render_template('index.html', data=todo_items)
 
 
 if __name__ == '__main__':
